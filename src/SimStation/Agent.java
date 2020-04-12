@@ -1,6 +1,7 @@
 package SimStation;
 
 import java.io.Serializable;
+import java.util.Random;
 
 public abstract class Agent implements Serializable, Runnable{
 	
@@ -15,14 +16,15 @@ public abstract class Agent implements Serializable, Runnable{
 	private AgentState state;
 	private Simulation world;
 	private Thread thread;
+	private Random rand = new Random();
 	
-	public Agent(String name) {
+	public Agent(String name, Simulation thisSimulation) {
 		this.name = name;
-		world = new Simulation();
+		world = thisSimulation;
 		state = AgentState.READY;
 		heading = Heading.EAST;
-		xc = Simulation.WORLD_SIZE / 2;
-		yc = Simulation.WORLD_SIZE / 2;
+		xc = rand.nextInt(Simulation.WORLD_SIZE);
+		yc = rand.nextInt(Simulation.WORLD_SIZE);
 	}
 	
 	public String getName() {
@@ -77,7 +79,9 @@ public abstract class Agent implements Serializable, Runnable{
 		}
 	}
 	
-	public void start() {}
+	public synchronized void start() {
+		state = AgentState.RUNNING;
+	}
 	
 	public synchronized void suspend() {
 		state = AgentState.SUSPEND;
@@ -138,7 +142,7 @@ public abstract class Agent implements Serializable, Runnable{
 			this.yc = ypos;
 			world.changed();
 		}
-		
+
 	}
 
 }
