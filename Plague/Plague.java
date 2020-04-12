@@ -7,7 +7,11 @@ import java.util.Random;
 
 public class Plague extends Agent {
 
-    Random rand = new Random();
+    /**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+	Random rand = new Random();
     private boolean infected;
     private boolean immunity;
     public int speed;
