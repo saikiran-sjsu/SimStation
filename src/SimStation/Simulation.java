@@ -1,6 +1,8 @@
 package SimStation;
 
 import java.util.*;
+
+import RandomWalk.RandomWalk;
 import mvc.*;
 
 public class Simulation extends Model{
@@ -32,10 +34,18 @@ public class Simulation extends Model{
     }
     
     public void start() {
+		if(!agents.isEmpty()) {
+			agents.clear();
+			clock = 0;
+			startTimer();
+		}
+
+
     	this.populate();
     	for(Agent a : agents) {
     		Thread thread = new Thread(a);
     		thread.start();
+    		a.start();
     	}
     }
     
@@ -43,12 +53,15 @@ public class Simulation extends Model{
 		for(Agent a : agents) {
     		a.suspend();
     	}
+		stopTimer();
 	}
 	
 	public void resume() {
+		startTimer();
 		for(Agent a : agents) {
     		a.resume();
     	}
+
 	}
 	
 	public void stop() {
@@ -56,6 +69,8 @@ public class Simulation extends Model{
 		for(Agent a : agents) {
 			a.stop();
 		}
+
+
 
 		System.out.println("Stopped");	
 	}
