@@ -11,26 +11,23 @@ public class Bird extends Agent{
      *
      */
     private static final long serialVersionUID = 1L;
-    Random rand = new Random();
-
-    public int speed;
-    public Heading head;
-
+    private int speed;
+    private Heading head;
     private Bird neighbor = this;
 
     public Bird(Simulation thisSimulation) {
         super("Bird", thisSimulation);
+        Random rand = new Random();
         speed = rand.nextInt(11) + 1;
         head = Heading.getRandomHeading();
     }
 
     @Override
     public void update() {
-        neighbor = (Bird) world.getNeighbor(this);
+        neighbor = (Bird) this.getWorld().getNeighbor(this);
         speed = neighbor.speed;
         head = neighbor.head;
         this.setHeading(head);
-
         this.move(speed);
     }
 

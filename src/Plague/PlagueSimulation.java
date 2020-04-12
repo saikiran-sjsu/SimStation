@@ -6,7 +6,11 @@ import mvc.AppPanel;
 
 public class PlagueSimulation extends Simulation {
 
-    public static int VIRULENCE = 50; // % chance of infection
+    /**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+	public static int VIRULENCE = 50; // % chance of infection
     public static int RESISTANCE = 2; // % chance of resisting infection
 
     public double counter =0.0;
@@ -30,11 +34,9 @@ public class PlagueSimulation extends Simulation {
                 counter++;
             }
         }
-
-        System.out.println(counter);
         String[] stats = new String[3];
         stats[0] = "#agents = " + getAgentSize();
-        stats[1] = "clock = " + this.clock;
+        stats[1] = "clock = " + this.getClock();
         stats[2] = "% infected = " + (counter/getAgentSize())*100 ;
         return stats;
 
@@ -44,9 +46,5 @@ public class PlagueSimulation extends Simulation {
         AppPanel panel = new SimulationPanel(new PlagueFactory());
         panel.display();
     }
-
-
-
-
 
 }

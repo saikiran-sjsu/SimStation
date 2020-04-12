@@ -10,7 +10,12 @@ import java.util.LinkedList;
 public class PlagueView extends View{
 
 
-    public PlagueView(Model model){
+    /**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+
+	public PlagueView(Model model){
         super(model);
         setPreferredSize(new Dimension(Simulation.WORLD_SIZE, Simulation.WORLD_SIZE));
     }

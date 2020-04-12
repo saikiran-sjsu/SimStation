@@ -14,7 +14,7 @@ public abstract class Agent implements Serializable, Runnable{
 	private int xc;
 	private int yc;
 	private AgentState state;
-	protected Simulation world;
+	private Simulation world;
 	private Thread thread;
 	private Random rand = new Random();
 	

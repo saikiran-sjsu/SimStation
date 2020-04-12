@@ -4,7 +4,12 @@ import SimStation.*;
 
 public class Flocking extends Simulation {
 
-    @Override
+    /**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+
+	@Override
     public void populate() {
         for(int i = 0; i < 50; i++) {
             this.addAgent(new Bird(this));

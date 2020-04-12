@@ -1,8 +1,6 @@
 package Plague;
 
-import SimStation.Simulation;
 import SimStation.SimulationFactory;
-import SimStation.SimulationView;
 import mvc.*;
 
 public class PlagueFactory extends SimulationFactory {
