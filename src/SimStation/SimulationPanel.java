@@ -62,7 +62,7 @@ public class SimulationPanel extends AppPanel{
 		this.add(allBtnPanel);
 		
 		JPanel view = new JPanel();
-		view.add(new SimulationView((Simulation) model));
+		view.add(((SimulationFactory) factory).getView(model));
 		this.add(view);
 		
 	}
