@@ -25,9 +25,9 @@ public class SimulationFactory implements AppFactory{
 			return new StartCommand(model);
 		} else if(type.toLowerCase().equals("stats")) {
 			return new StatsCommand(model);
-		} else if(type.toLowerCase().equals("Stop")) {
+		} else if(type.toLowerCase().equals("stop")) {
 			return new StopCommand(model);
-		} else if(type.toLowerCase().equals("Suspend")) {
+		} else if(type.toLowerCase().equals("suspend")) {
 			return new SuspendCommand(model);
 		}
 		else {
