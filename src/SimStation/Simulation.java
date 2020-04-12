@@ -10,6 +10,7 @@ public class Simulation extends Model{
 	 */
 	private static final long serialVersionUID = 1L;
 	public static Integer WORLD_SIZE = 250; 
+	public static Integer SHAPE_SIZE = 5;
 	private Timer timer;
 	private int clock;
 	private LinkedList<Agent> agents;
@@ -31,8 +32,10 @@ public class Simulation extends Model{
     }
     
     public void start() {
+    	this.populate();
     	for(Agent a : agents) {
-    		a.start();
+    		Thread thread = new Thread(a);
+    		thread.start();
     	}
     }
     
@@ -51,8 +54,10 @@ public class Simulation extends Model{
 	public void stop() {
 		stopTimer();
 		for(Agent a : agents) {
-    		a.stop();
-    	}
+			a.stop();
+		}
+
+		System.out.println("Stopped");	
 	}
 	
 	public String[] getStats() {
@@ -60,6 +65,10 @@ public class Simulation extends Model{
 	  stats[0] = "#agents = " + agents.size();
 	  stats[1] = "clock = " + clock;
 	  return stats;
+	}
+	
+	public LinkedList<Agent> getAgents() {
+		return this.agents;
 	}
 	
 	public Agent getNeighbor(Agent a) {
@@ -70,9 +79,7 @@ public class Simulation extends Model{
 		this.agents.add(a);
 	}
 	
-	public void populate() {
-		
-	}
+	public void populate() {}
     
   private class ClockUpdater extends TimerTask {
 	  public void run() {
