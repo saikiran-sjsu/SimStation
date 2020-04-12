@@ -87,9 +87,27 @@ public class Simulation extends Model{
 	}
 	
 	public Agent getNeighbor(Agent a) {
-		return null;
+		int closestDist = 20;
+		int xDist = 0;
+		int yDist = 0;
+		int totalDist = 0;
+		Agent closestAgent = a;
+
+		for(Agent g : agents) {
+			if(a == g) {
+				continue;
+			}
+			xDist = Math.abs(a.getX() - g.getX());
+			yDist = Math.abs(a.getY() - g.getY());
+			totalDist = xDist + yDist;
+			if(totalDist < closestDist) {
+				closestDist = totalDist;
+				closestAgent = g;
+			}
+		}
+		return closestAgent;
 	}
-	
+
 	public void addAgent(Agent a) {
 		this.agents.add(a);
 	}
