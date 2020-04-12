@@ -1,8 +1,6 @@
 package SimStation;
 
 import java.util.*;
-
-import RandomWalk.RandomWalk;
 import mvc.*;
 
 public class Simulation extends Model{
