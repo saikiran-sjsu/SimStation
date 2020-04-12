@@ -26,14 +26,13 @@ public class PlagueView extends View{
             Plague p = (Plague) a;
             if(p.isInfected()){
                 gc.setColor(Color.RED);
-                gc.fillOval(a.getX(), a.getY(), Simulation.SHAPE_SIZE, Simulation.SHAPE_SIZE);
 
             }else{
                 gc.setColor(Color.GREEN);
-                gc.fillOval(a.getX(), a.getY(), Simulation.SHAPE_SIZE, Simulation.SHAPE_SIZE);
-
             }
+            gc.fillOval(a.getX(), a.getY(), Simulation.SHAPE_SIZE, Simulation.SHAPE_SIZE);
         }
+        gc.setColor(oldColor);
 
         //if your infected then green else red
 
