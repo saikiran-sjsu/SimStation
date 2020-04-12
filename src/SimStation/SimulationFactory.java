@@ -3,6 +3,7 @@ package SimStation;
 import mvc.AppFactory;
 import mvc.Command;
 import mvc.Model;
+import mvc.View;
 
 public class SimulationFactory implements AppFactory{
 
@@ -51,9 +52,15 @@ public class SimulationFactory implements AppFactory{
 		return helps;
 	}
 
+	public View getView(Model model) {
+		return new SimulationView((Simulation) model);
+	}
+
 	@Override
 	public String about() {
 		return "Sim Station version 1.0.";
 	}
+
+
 
 }
