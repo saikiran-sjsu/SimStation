@@ -40,6 +40,5 @@ public class PlagueView extends View{
         gc.setColor(oldColor);
 
         //if your infected then green else red
-
     }
 }

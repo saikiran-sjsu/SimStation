@@ -12,7 +12,6 @@ public class PlagueSimulation extends Simulation {
 	private static final long serialVersionUID = 1L;
 	public static int VIRULENCE = 50; // % chance of infection
     public static int RESISTANCE = 2; // % chance of resisting infection
-
     public double counter =0.0;
 
 

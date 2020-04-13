@@ -8,5 +8,7 @@ public abstract class Strategy {
 		this.owner = owner;
 	}
 	
-	public abstract void algo();
+	public abstract boolean algorithm();
+	
+	public abstract String getName();
 }

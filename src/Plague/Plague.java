@@ -38,7 +38,6 @@ public class Plague extends Agent {
         }
     }
 
-
     @Override
     public void update() {
         Random rand = new Random();

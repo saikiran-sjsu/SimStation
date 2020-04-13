@@ -5,6 +5,7 @@ import mvc.*;
 
 public class PlagueFactory extends SimulationFactory {
 
+
     @Override
     public Model makeModel() {
         return new PlagueSimulation();
@@ -14,4 +15,5 @@ public class PlagueFactory extends SimulationFactory {
     public View getView(Model model) {
         return new PlagueView((PlagueSimulation) model);
     }
+
 }
