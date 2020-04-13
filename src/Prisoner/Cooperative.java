@@ -7,13 +7,13 @@ public class Cooperative extends Strategy{
 	}
 
 	@Override
-	public void algo() {
-		Prisoner prisoner1 = this.owner;
-		Prisoner prisoner2 = prisoner1.getNeighbour();
-		prisoner1.addFitness(3);
-		prisoner2.addFitness(3);
-		prisoner1.cooperate();
-		prisoner2.cooperate();
+	public String getName() {
+		return "Cooperative";
+	}
+
+	@Override
+	public boolean algorithm() {
+		return true;
 	}
 
 }
