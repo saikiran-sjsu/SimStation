@@ -24,7 +24,7 @@ public class Bird extends Agent{
 
     @Override
     public void update() {
-        neighbor = (Bird) this.getWorld().getNeighbor(this);
+        neighbor = (Bird) this.getWorld().getNeighbor(this, 20);
         speed = neighbor.speed;
         head = neighbor.head;
         this.setHeading(head);
