@@ -29,7 +29,7 @@ public class Prisoner extends Agent{
 		if((sim.getClock() % 100) == 0) {
 			printScore();
 		}
-		neighbour = (Prisoner) sim.getNeighbor(this);
+		neighbour = (Prisoner) sim.getNeighbor(this, Integer.MAX_VALUE);
 		assert neighbour != null;
 		playGame(pickStrategy());
 		this.setHeading(Heading.getRandomHeading());
