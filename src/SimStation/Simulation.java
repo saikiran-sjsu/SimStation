@@ -88,8 +88,8 @@ public class Simulation extends Model{
 		return clock;
 	}
 	
-	public Agent getNeighbor(Agent a) {
-		int closestDist = Integer.MAX_VALUE;
+	public Agent getNeighbor(Agent a, int distance) {
+		int closestDist = distance;
 		int xDist = 0;
 		int yDist = 0;
 		int totalDist = 0;
