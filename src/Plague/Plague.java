@@ -49,6 +49,5 @@ public class Plague extends Agent {
         }
         this.move(speed);
 
-
     }
 }

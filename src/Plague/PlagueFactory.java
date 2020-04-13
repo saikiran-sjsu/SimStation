@@ -14,8 +14,4 @@ public class PlagueFactory extends SimulationFactory {
     public View getView(Model model) {
         return new PlagueView((PlagueSimulation) model);
     }
-
-
-
-
 }

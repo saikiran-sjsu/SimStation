@@ -14,7 +14,6 @@ public class PlagueSimulation extends Simulation {
     public static int RESISTANCE = 2; // % chance of resisting infection
 
     public double counter =0.0;
-    //public int agentSize = this.getAgents().size();
 
 
     public void populate() {

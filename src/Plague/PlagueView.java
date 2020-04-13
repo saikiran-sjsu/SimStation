@@ -41,8 +41,5 @@ public class PlagueView extends View{
 
         //if your infected then green else red
 
-
-
-
     }
 }
