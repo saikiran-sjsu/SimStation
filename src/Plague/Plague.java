@@ -15,17 +15,15 @@ public class Plague extends Agent {
     private boolean infected;
     private boolean immunity;
     public int speed;
+    public Plague neighbor;
 
     public Plague(Simulation thisSimulation) {
 
         super("Plague", thisSimulation);
         int safezone = Utilities.rng.nextInt(100);
         immunity = safezone < PlagueSimulation.RESISTANCE; //safe from virus
-        speed = rand.nextInt(11) + 1;
+        speed = rand.nextInt(4) + 1;
         infection();
-
-
-
     }
 
     public boolean isImmunity() { return immunity; }
@@ -39,10 +37,18 @@ public class Plague extends Agent {
 
         }
     }
+
+
     @Override
     public void update() {
         Random rand = new Random();
         this.setHeading(Heading.getRandomHeading());
-        this.move(rand.nextInt(11) + 1);
+        neighbor = (Plague) this.getWorld().getNeighbor(this, 20);
+        if(neighbor.isInfected() && !(this.isInfected())){
+            this.infection();
+        }
+        this.move(speed);
+
+
     }
 }
