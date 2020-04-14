@@ -22,7 +22,7 @@ public class Plague extends Agent {
         super("Plague", thisSimulation);
         int safezone = Utilities.rng.nextInt(100);
         immunity = safezone < PlagueSimulation.RESISTANCE; //safe from virus
-        speed = rand.nextInt(7) + 1;
+        speed = rand.nextInt(8) + 1;
         infection();
     }
 
