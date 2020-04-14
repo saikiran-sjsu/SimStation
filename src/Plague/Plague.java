@@ -39,7 +39,6 @@ public class Plague extends Agent {
         if(!isImmunity()){
             int safezone = Utilities.rng.nextInt(100);
             this.infected = safezone < PlagueSimulation.VIRULENCE;
-
         }
     }
 

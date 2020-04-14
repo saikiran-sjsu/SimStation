@@ -110,43 +110,72 @@ public class Prisoner extends Agent{
 	public void setCooperate(boolean cooperate) {
 		this.isCooperate = cooperate;
 	}
-
-	private void printScore() {
+	
+	public double getSelfishAvg() {
 		LinkedList<Agent> temp = this.getWorld().getAgents();
-		int selfishScore = 0;
-		int numSelfish = 0;
-		int cooperativeScore = 0;
-		int numCooperative = 0;
-		int randomScore= 0;
-		int numRandom = 0;
-		int reciprocalScore = 0;
-		int numReciprocal = 0;
-
+		double total = 0.0;
+		int num = 0;
 		for(Agent a : temp) {
 			Prisoner p = (Prisoner) a;
-			String stra = p.getStrategy();
-			if(stra.equals("Selfish")) {
-				selfishScore += p.getFitness();
-				numSelfish++;
-			} else if(stra.equals("Cooperative")) {
-				cooperativeScore += p.getFitness();
-				numCooperative++;
-			} else if(stra.equals("Random")) {
-				randomScore += p.getFitness();
-				numRandom++;
-			} else {
-				reciprocalScore += p.getFitness();
-				numReciprocal++;
+			if(p.getStrategy().equals("Selfish")) {
+				total += p.getFitness();
+				num++;
 			}
 		}
+		return Math.round((total / num * 10)) / 10.0 ;
+	}
+	
+	public double getCooperateAvg() {
+		LinkedList<Agent> temp = this.getWorld().getAgents();
+		double total = 0.0;
+		int num = 0;
+		for(Agent a : temp) {
+			Prisoner p = (Prisoner) a;
+			if(p.getStrategy().equals("Cooperative")) {
+				total += p.getFitness();
+				num++;
+			}
+		}
+		return Math.round((total / num * 10)) / 10.0 ;
+	}
+	
+	public double getRandomAvg() {
+		LinkedList<Agent> temp = this.getWorld().getAgents();
+		double total = 0.0;
+		int num = 0;
+		for(Agent a : temp) {
+			Prisoner p = (Prisoner) a;
+			if(p.getStrategy().equals("Random")) {
+				total += p.getFitness();
+				num++;
+			}
+		}
+		return Math.round((total / num * 10)) / 10.0 ;
+	}
+	
+	public double getReciprocalAvg() {
+		LinkedList<Agent> temp = this.getWorld().getAgents();
+		double total = 0.0;
+		int num = 0;
+		for(Agent a : temp) {
+			Prisoner p = (Prisoner) a;
+			if(p.getStrategy().equals("Reciprocal")) {
+				total += p.getFitness();
+				num++;
+			}
+		}
+		return Math.round((total / num * 10)) / 10.0 ;
+	}
+
+	private void printScore() {
 
 		System.out.println("====================================");
 		System.out.println("|| Strategy    ||   Average Score ||");
 		System.out.println("====================================");
-		System.out.println("|| Selfish     ||      " + selfishScore / numSelfish + "           ||");
-		System.out.println("|| Cooperative ||      " + cooperativeScore / numCooperative + "           ||");
-		System.out.println("|| Random      ||      " + randomScore / numRandom + "           ||");
-		System.out.println("|| Reciprocal  ||      " + reciprocalScore /  numReciprocal + "           ||");
+		System.out.println("|| Selfish     ||      " + this.getSelfishAvg() + "           ||");
+		System.out.println("|| Cooperative ||      " + this.getCooperateAvg() + "           ||");
+		System.out.println("|| Random      ||      " + this.getRandomAvg() + "           ||");
+		System.out.println("|| Reciprocal  ||      " + this.getReciprocalAvg() + "           ||");
 		System.out.println("====================================");
 		System.out.println();
 	}
