@@ -42,6 +42,13 @@ public class Plague extends Agent {
         }
     }
 
+    public void cured() {
+        if(this.isInfected()){
+            int safezone = Utilities.rng.nextInt(100);
+            this.infected = !(safezone < PlagueSimulation.CURE);
+        }
+    }
+
     @Override
     public void update() {
         Random rand = new Random();
@@ -49,10 +56,14 @@ public class Plague extends Agent {
         neighbor = (Plague) this.getWorld().getNeighbor(this, 20);
         if(neighbor.isInfected() && !(this.isInfected())){
             this.infection();
-            if(this.isInfected()){
-                neighbor.setInfected(false);
-            }
+
+//            if(this.isInfected()){
+//                neighbor.setInfected(false);
+//            }
         }
+
+        cured();
+
 
 
         this.move(speed);
