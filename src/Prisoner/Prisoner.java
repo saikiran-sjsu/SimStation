@@ -14,7 +14,7 @@ public class Prisoner extends Agent{
 	 */
 	private static final long serialVersionUID = 1L;
 	private int fitness;
-	private boolean isCooperate;
+	private boolean isCooperate;	//keeps track of what opponent did last game
 	private Random rand;
 	private Strategy strategy;
 	private Simulation sim;
@@ -70,14 +70,14 @@ public class Prisoner extends Agent{
 			neighbor.setCooperate(true);
 		} else if(this.cooperate() && !neighbor.cooperate()) {
 			//Prisoner1 cooperate while prisoner2 cheat
-			this.setCooperate(true);
+			this.setCooperate(false);
 			neighbor.addFitness(5);
-			neighbor.setCooperate(false);
+			neighbor.setCooperate(true);
 		} else if(!this.cooperate() && neighbor.cooperate()) {
 			//Prisoner1 cheat while prisoner2 cooperate
 			this.addFitness(5);
-			this.setCooperate(false);
-			neighbor.setCooperate(true);
+			this.setCooperate(true);
+			neighbor.setCooperate(false);
 		} else {
 			//Both Cheat
 			this.addFitness(1);
